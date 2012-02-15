@@ -1,0 +1,20 @@
+This is a simple app that will simulate an USB joystick using your old game port joystick.
+
+You will need to use Teensyduino tools to compile the program. You can find it in the official Teensy site: http://www.pjrc.com/teensy/
+
+It has automatic deadzone detection, and automatic calibration. 
+
+*The deadzone is detected the first 10 seconds after pluggin in the USB conector. So move the joystick around to the point where you want the deadzone to be active while the led is on.
+*The automatic calibration works by moving the joystick in every single direction to the maximun possible (led should be off). The application will detect the extreme values and calculate the center. There is no need to calibrate the potentiometers in the middle of a game anymore :P 
+
+(old joysticks didn't have this, so I thought it would be a cool feature)
+
+The connections to the Teensy++2.0 board should be:
+  pinMode(0, INPUT_PULLUP); <---------- button 1
+  pinMode(1, INPUT_PULLUP); <---------- button 2
+  pinMode(2, INPUT_PULLUP); <---------- button 3
+  pinMode(3, INPUT_PULLUP); <---------- button 4
+  pinMode(4, OUTPUT); <--------- a red led + 100k resistor.
+  analogRead(0); <---------- X axis potentiometer
+  analogRead(1); <---------- Y axis pot
+  analogRead(2); <---------- Z axis pot
